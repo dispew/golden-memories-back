@@ -55,7 +55,6 @@ class RegisterUser(MethodView):
     @blp.response(200, MessageSchema)
     def post(self, args):
         """Register a new User"""
-        print(request.files)
         file = request.files.get('image', None)
 
         if file:

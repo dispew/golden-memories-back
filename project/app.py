@@ -25,16 +25,15 @@ def hello_world():
 
 @app.before_first_request
 def create_user():
-    user_role = user_datastore.find_or_create_role('user')
-
-    user = user_datastore.find_user(email='user@golden.memories')
-    if not user:
-        user_datastore.create_user(
-            name='User', email='user@golden.memories', password=utils.hash_password('abc123'),
-            roles=[user_role], fs_uniquifier=str(uuid.uuid4())
-        )
+    # user_role = user_datastore.find_or_create_role('user')
+    # user = user_datastore.find_user(email='user@golden.memories')
+    # if not user:
+    #     user_datastore.create_user(
+    #         name='User', email='user@golden.memories', password=utils.hash_password('abc123'),
+    #         roles=[user_role], fs_uniquifier=str(uuid.uuid4())
+    #     )
     admin_role = user_datastore.find_or_create_role('admin')
-    admin = user_datastore.find_user(email='user@golden.memories')
+    admin = user_datastore.find_user(email='admin@golden.memories')
     if not admin:
         user_datastore.create_user(
             name='Admin', email='admin@golden.memories', password=utils.hash_password('abcd1234'),
