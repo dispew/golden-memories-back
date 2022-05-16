@@ -57,9 +57,12 @@ S3_SECRET_KEY = ''
 ```
 
 ##Flask settings for production
+
+```
 DEBUG = False 
 TESTING = False
 USE_RELOADER = False
+```
 
 ##RAPIDOC api
 The RAPIDOC api documentation URL is `/api/doc`
