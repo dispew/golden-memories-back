@@ -1,16 +1,14 @@
-import uuid
 from datetime import datetime
 
 from flask import jsonify, request
 from flask.views import MethodView
-from flask_jwt_extended import create_access_token, decode_token, jwt_required
+from flask_jwt_extended import create_access_token, decode_token
 from flask_security import utils
-from flask_smorest import Blueprint, abort
+from flask_smorest import Blueprint
 
 from project.models.photo import PhotoModel
-from project.models.role import RoleModel
 from project.models.user import UserModel
-from project.schemas.schemas import LoginQueryArgsSchema, JWTSchema, UserCreateSchema
+from project.schemas.schemas import LoginQueryArgsSchema, JWTSchema
 
 
 blp = Blueprint(

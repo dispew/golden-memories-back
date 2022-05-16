@@ -15,8 +15,6 @@ class UserModel(me.Document):
     email = me.EmailField(required=True)
     password = me.StringField(required=True, min_length=6)
 
-    # photo = me.StringField()
-
     fs_uniquifier = me.StringField(required=True, unique=True)
 
     active = me.BooleanField(default=True)

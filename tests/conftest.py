@@ -3,9 +3,12 @@ from datetime import datetime
 from http.client import HTTPException
 
 import pytest
+from flask_security import MongoEngineUserDatastore
 
 from project.api import auth, user, photo
-from project.extension import api, app, db
+from project.extension import api, app, db, security
+from project.models.role import RoleModel
+from project.models.user import UserModel
 
 
 @pytest.fixture(scope='module')
@@ -17,12 +20,8 @@ def test_client():
     api.register_blueprint(user.blp)
     api.register_blueprint(photo.blp)
 
-    @app.errorhandler(HTTPException)
-    def handle_exception(e):
-        with open('log/cli.log', 'a') as log:
-            log.write('##### ' + str(datetime.now()) + ' #####')
-            log.write(traceback.format_exc())
-            log.close()
+    user_datastore = MongoEngineUserDatastore(db, UserModel, RoleModel)
+    security.init_app(app, user_datastore)
 
     # Flask provides a way to test your application by exposing the Werkzeug test Client
     # and handling the context locals for you.

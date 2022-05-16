@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_mongoengine import MongoEngine
+from flask_security import Security
 from flask_smorest import Api
 
 from flask_jwt_extended import JWTManager
@@ -36,5 +37,6 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.json_encoder = CustomJSONEncoder
 
-awsS3 = AWSS3(app, bucket='anchor-golden-memories')
+awsS3 = AWSS3(app.config, bucket='anchor-golden-memories')
 
+security = Security()

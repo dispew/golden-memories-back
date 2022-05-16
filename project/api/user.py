@@ -39,9 +39,9 @@ class UserById(MethodView):
     @jwt_required()
     @blp.doc(security=[{"bearerAuth": []}])
     @blp.response(200, UserSchema)
-    def post(self, user_id):
+    def get(self, user_id):
         """Get user data by ID"""
-        user = UserModel.objects.get_or_404(_id=user_id)
+        user = UserModel.objects(id=user_id).first()
         if user:
             return user
 

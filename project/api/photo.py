@@ -11,7 +11,7 @@ from project.extension import awsS3
 from project.models.comment import CommentModel
 from project.models.photo import PhotoModel
 from project.models.user import UserModel
-from project.schemas.schemas import UserSchema, PhotoSchema, PhotoCreateSchema, LightPhotoSchema, MessageSchema
+from project.schemas.schemas import PhotoSchema, PhotoCreateSchema, LightPhotoSchema, MessageSchema
 
 blp = Blueprint(
     'Photos',
@@ -83,9 +83,6 @@ class PhotoCreate(MethodView):
             thumb_image = image.resize((400, int(image.size[1] * (400 / image.size[0]))), Image.ANTIALIAS)
             thumb_image.save(thumb_bytes, format='WEBP', quality=75)
             thumb_bytes.seek(0)
-
-            # image.save('/home/dispew/anchor/golden-memories/image.webp', format='WEBP', quality=75)
-            # thumb_image.save('/home/dispew/anchor/golden-memories/thumb_image.webp', format='WEBP', quality=75)
 
             if awsS3.upload_to_aws(image_bytes, f'{s3_key}.webp') and \
                     awsS3.upload_to_aws(thumb_bytes, f'thumb-{s3_key}.webp'):

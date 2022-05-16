@@ -32,5 +32,5 @@ class BaseConfig:
     DEBUG = True
     USE_RELOADER = True
 
-    S3_ACCESS_KEY = ''
-    S3_SECRET_KEY = ''
+    S3_ACCESS_KEY = 'AKIA4KGV2DBO6XJGWXJ6'
+    S3_SECRET_KEY = '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'

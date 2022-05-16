@@ -84,6 +84,13 @@ $ bash run.sh
 
 ```
 
+
+## Api test with PyTest
+Basic api test
+```
+$ python -m pytest tests/test_api.py::TestApi
+```
+
 ## Changelog
 
 - Version 0.1 : basic REST back-end project  
