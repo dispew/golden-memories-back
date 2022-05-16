@@ -49,7 +49,7 @@ $ pip install -r requirements.txt
 ## Flask Configuration
 
 #### The project configurations must be on the config.py at the `BaseConfig` class
-#### You must supply your AWS S3 authh tokens
+#### You must supply your AWS S3 auth tokens
 
 ```
 S3_ACCESS_KEY = ''
