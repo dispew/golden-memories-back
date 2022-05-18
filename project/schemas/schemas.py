@@ -51,7 +51,7 @@ class CommentCreateSchema(ma.Schema):
 
 class CommentSchema(ma.Schema):
     class Meta:
-        fields = ('owner', 'message')
+        fields = ('owner', 'message', 'created')
     owner = ma.fields.Nested(UserSchema)
 
 
